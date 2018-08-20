@@ -1,4 +1,4 @@
-node-red-contrib-jsonata
+node-red-contrib-tgr-jsonata
 =====================
 
 Node-RED node for JSONata
