@@ -8,7 +8,7 @@ Install
 -------
 Run the following command in your Node-RED user directory - typically `~/.node-red`
 
-        npm install node-red-contrib-jsonata
+        npm install node-red-contrib-tgr-jsonata
 
 Message Inputs
 ----------
@@ -40,4 +40,4 @@ Rob Goodsell
 
 Copyright and license
 ----------
-Copyright 2018 Rob Goodsell under the Apache 2.0 license.
+Copyright 2018 Rob Goodsell under the MIT license.
