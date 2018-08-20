@@ -1,0 +1,22 @@
+{
+  "name": "node-red-contrib-jsonata",
+  "version": "1.0.1",
+  "description": "Dynamic JSONata node for Node-RED",
+  "license": "MIT",
+  "author": {
+    "name": "Rob Goodsell"
+  },
+  "repository": {
+    "type": "git",
+    "url": "  https://github.com/robtigger/node-red-contrib-jsonata"
+  },
+  "dependencies": {},
+  "keywords": [
+    "node-red"
+  ],
+  "node-red": {
+    "nodes": {
+      "jsonnata": "jsonata.js"
+    }
+  }
+}

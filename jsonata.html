@@ -1,0 +1,81 @@
+
+<script type="text/x-red" data-template-name="jsonata">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]common.label.name">
+    </div>
+	<hr align="middle"/>
+    <div class="form-row node-json-to-json-options">
+        <label style="width:100%; border-bottom: 1px solid #eee;"><span>JSONata Options</span></label>
+    </div>
+        <div class="form-row node-json-to-json-options" style="padding-left: 0px;">
+        <label for="node-input-property"><span>JSON</span></label>
+        <input type="text" id="node-input-property" style="width:70%;"/>
+    </div>
+    <div class="form-row node-json-to-json-options" style="padding-left: 0px;">
+        <label for="node-input-jsonatauser"><span>JSONata Query</span></label>
+        <input type="text" id="node-input-jsonatauser" style="width:70%;"/>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="jsonata">
+    <p>Performs a JSONNata query on the JSON string provided, returning the result</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">string</span></dt>
+        <dd>Formatted JSON string. <i>(Mandatory)</i></dd>
+        <dt>jsonata<span class="property-type">string</span></dt>
+        <dd>JSONata to query the JSON. <i>(Mandatory)</i></dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>jsonataResult<span class="property-type">string</span></dt>
+        <dd>Result returned from the JSONata query.</dd>
+    </dl>
+    <dl class="message-properties">
+        <dt>jsonataStatus<span class="property-type">string</span></dt>
+        <dd>Status message returned.</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>A formatted JSON string (Default is <code>msg.payload</code>) is queried using the JSONata <code>msg.jsonata</code> sent by the message or populated in the node options (JSONata query).</p>
+    <p>On the successful execution of the JSONata query the result will be returned <code>msg.jsonataResult</code> and status <code>msg.jsonataStatus</code></p>
+	<p><b>Note</b>, JSONata using <code>msg.jsonata</code> has priority over the user defined JSONata query within the node options. The JSONata query options will be ignored if <code>msg.jsonata</code> is defined in the message.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('jsonata',{
+        category: 'function',
+        color:"#DEBD5C",
+        defaults: {
+            name: {value:"jsonata"},
+            property: {value:"payload",required:true},
+            jsonata: {value:""},
+			jsonatauser: {value:""},
+			jsonataresult: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "parser-json.png",
+        label: function() {
+            return this.name||"jsonata";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        oneditprepare: function() {
+            if (this.property === undefined) {
+                $("#node-input-property").val("payload");
+            }
+            $("#node-input-property").typedInput({default:'msg',types:['msg']});
+            $("#node-input-action").change(function() {
+                if (this.value === "" || this.value === "str") {
+                    $(".node-json-to-json-options").show();
+                } else {
+                    $(".node-json-to-json-options").hide();
+                }
+            });
+            $("#node-input-action").change();
+        }
+    });
+</script>
