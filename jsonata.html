@@ -14,8 +14,8 @@
         <input type="text" id="node-input-property" style="width:70%;"/>
     </div>
     <div class="form-row node-json-to-json-options" style="padding-left: 0px;">
-        <label for="node-input-jsonatauser"><span>JSONata Query</span></label>
-        <input type="text" id="node-input-jsonatauser" style="width:70%;"/>
+        <label for="node-input-jsonataOpts"><span>JSONata Query</span></label>
+        <input type="text" id="node-input-jsonataOpts" style="width:70%;"/>
     </div>
 </script>
 
@@ -37,10 +37,14 @@
         <dt>jsonataStatus<span class="property-type">string</span></dt>
         <dd>Status message returned.</dd>
     </dl>
+     <dl class="message-properties">
+        <dt>jsonataByMsg<span class="property-type">boolean</span></dt>
+        <dd>Result used the message (msg) JSONata query.</dd>
+    </dl>
     <h3>Details</h3>
     <p>A formatted JSON string (Default is <code>msg.payload</code>) is queried using the JSONata <code>msg.jsonata</code> sent by the message or populated in the node options (JSONata query).</p>
-    <p>On the successful execution of the JSONata query the result will be returned <code>msg.jsonataResult</code> and status <code>msg.jsonataStatus</code></p>
-	<p><b>Note</b>, JSONata using <code>msg.jsonata</code> has priority over the user defined JSONata query within the node options. The JSONata query options will be ignored if <code>msg.jsonata</code> is defined in the message.</p>
+    <p>On the successful execution of the JSONata query the result will be returned <code>msg.jsonataResult</code>, status <code>msg.jsonataStatus</code> and JSONata query used, message (msg) or options (opts) <code>msg.jsonataByMsg</code></p>
+    <p><b>Note</b>, JSONata using <code>msg.jsonata</code> has priority over the user defined JSONata query within the node options. The JSONata query options will be ignored if <code>msg.jsonata</code> is defined in the message.</p>
 </script>
 
 <script type="text/javascript">
@@ -51,8 +55,7 @@
             name: {value:"jsonata"},
             property: {value:"payload",required:true},
             jsonata: {value:""},
-			jsonatauser: {value:""},
-			jsonataresult: {value:""}
+			jsonataOpts: {value:""}
         },
         inputs:1,
         outputs:1,

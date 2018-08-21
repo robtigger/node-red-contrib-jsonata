@@ -17,8 +17,9 @@ Message Inputs
 
 Message Outputs
 ----------
-- **msg.jsonataResult** = The result returned. Only returned if the JSONata query is successful otherwise will be undefined.
-- **msg.jsonataStatus** = The status message, success or errored.
+- **msg.jsonataResult** (String) = The result returned. Only returned if the JSONata query is successful otherwise will be undefined.
+- **msg.jsonataStatus** (String) = The status message, success or errored returned.
+- **msg.jsonataByMsg** (Boolean) = The message (msg.jsonata) JSONata query was used, returning true. False, if the node options (JSONata Query) was utlised. Only defined when a result (msg.jsonataResult) is returned.
 
 Message Status
 ----------
@@ -32,7 +33,7 @@ The status returned either on the message (msg.jsonataStatus) or displayed below
 
 Note
 ----------
-When JSONata is set within the message (msg.jsonata) and the node options (JSONata Query) the message (msg.jsonata) take priority and the JSONata query in the node options will be ignored. Allowing a static JSONata query to be set and dynamically changed as required.
+When JSONata is set within the message (msg.jsonata) and the node options (JSONata Query) the message (msg.jsonata) has priority, the JSONata query in the node options will be ignored. Allowing a static JSONata query to be set and dynamically changed as required.
 
 Author
 ----------
