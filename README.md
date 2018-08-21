@@ -41,4 +41,4 @@ Rob Goodsell
 
 Copyright and license
 ----------
-Copyright 2018 Rob Goodsell under the Apache 2.0 license.
+Copyright 2018 Rob Goodsell under the MIT license.
